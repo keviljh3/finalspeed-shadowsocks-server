@@ -12,7 +12,7 @@ MAINTAINER Yale Huang <calvino.huang@gmail.com>
 RUN apt-get -y update && apt-get -y upgrade
 
 # Install shadowsocks-libev
-RUN apt-get install build-essential autoconf libtool libssl-dev git openjdk-7-jre unzip \
+RUN apt-get install build-essential autoconf libtool libssl-dev git openjdk-8-jre unzip \
 	libpcap-dev wget supervisor -y
 RUN git clone https://github.com/shadowsocks/shadowsocks-libev.git /root/shadowsocks-libev
 RUN wget -O /root/finalspeed_server.zip http://fs.d1sm.net/finalspeed/finalspeed_server.zip
