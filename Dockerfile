@@ -24,7 +24,7 @@ RUN rm -rf /root/shadowsocks-libev
 COPY start_finalspeed /opt/finalspeed/start_finalspeed
 COPY supervisord.conf /etc/supervisord.conf
 
-ENV SS_PASSWORD 1234567
+ENV SS_PASSWORD ibm123456
 ENV SS_METHOD aes-256-cfb
 
 EXPOSE 150/udp 8338/tcp
