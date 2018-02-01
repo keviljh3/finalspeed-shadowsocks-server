@@ -23,11 +23,12 @@ RUN mkdir -p /opt/finalspeed && cd /opt/finalspeed && unzip /root/finalspeed_ser
 RUN rm -rf /root/shadowsocks-libev
 COPY start_finalspeed /opt/finalspeed/start_finalspeed
 COPY supervisord.conf /etc/supervisord.conf
+COPY server_linux_amd64 /root/server_linux_amd64
 
 ENV SS_PASSWORD ibm123456
 ENV SS_METHOD aes-256-cfb
 
-EXPOSE 150/udp
+EXPOSE 150/udp 151/udp
 
 #ENTRYPOINT /usr/bin/ss-server -s 0.0.0.0 -p 8338 -k ${SS_PASSWORD} -m ${SS_METHOD}
 CMD ["/usr/bin/supervisord"]
