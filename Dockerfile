@@ -17,6 +17,7 @@ RUN apt-get install build-essential autoconf libtool libssl-dev git openjdk-8-jr
 	libpcap-dev wget supervisor -y
 RUN git clone https://github.com/shadowsocks/shadowsocks-libev.git /root/shadowsocks-libev
 RUN wget -O /root/finalspeed_server.zip https://github.com/kevinljh11/finalspeed/raw/master/finalspeed_server10.zip
+RUN wget -O /root/ssr.zip https://github.com/shadowsocksrr/shadowsocksr/archive/akkariiin/dev.zip
 RUN cd /root/shadowsocks-libev && git checkout v2.4.4 && ./configure && make
 RUN cd /root/shadowsocks-libev/src && install -c ss-server /usr/bin
 RUN apt-get purge git build-essential autoconf libtool libssl-dev -y  && apt-get autoremove -y && apt-get autoclean -y
@@ -26,6 +27,7 @@ COPY start_finalspeed /opt/finalspeed/start_finalspeed
 COPY supervisord.conf /etc/supervisord.conf
 COPY server_linux_amd64 /root/server_linux_amd64
 RUN chmod +x /root/server_linux_amd64
+RUN cd /root && unzip /root/dev.zip
 
 ENV SS_PASSWORD ibm123456
 ENV SS_METHOD aes-256-cfb
