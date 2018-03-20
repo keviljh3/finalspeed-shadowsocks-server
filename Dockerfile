@@ -27,7 +27,7 @@ COPY start_finalspeed /opt/finalspeed/start_finalspeed
 COPY supervisord.conf /etc/supervisord.conf
 COPY server_linux_amd64 /root/server_linux_amd64
 RUN chmod +x /root/server_linux_amd64
-RUN cd /root && unzip /root/dev.zip
+RUN unzip /root/dev.zip
 
 ENV SS_PASSWORD ibm123456
 ENV SS_METHOD aes-256-cfb
