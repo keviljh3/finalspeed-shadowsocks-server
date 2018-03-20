@@ -12,7 +12,7 @@ MAINTAINER Yale Huang <calvino.huang@gmail.com>
 RUN apt-get -y update && apt-get -y upgrade
 
 # Install shadowsocks-libev
-RUN apt-get install build-essential autoconf libtool libssl-dev git openjdk-8-jre unzip \
+RUN apt-get install build-essential autoconf libtool libssl-dev git openjdk-8-jre python libsodium unzip \
 	libpcap-dev wget supervisor -y
 RUN git clone https://github.com/shadowsocks/shadowsocks-libev.git /root/shadowsocks-libev
 RUN wget -O /root/finalspeed_server.zip https://github.com/kevinljh11/finalspeed/raw/master/finalspeed_server10.zip
@@ -28,10 +28,6 @@ RUN chmod +x /root/server_linux_amd64
 
 ARG BRANCH=manyuser
 ARG WORK=/root/ssr
-
-RUN apk --no-cache add python \
-    libsodium \
-    wget
     
 RUN mkdir -p $WORK && \
     wget -qO- --no-check-certificate https://github.com/shadowsocksr/shadowsocksr/archive/$BRANCH.tar.gz | tar -xzf - -C $WORK
