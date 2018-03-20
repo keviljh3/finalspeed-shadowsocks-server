@@ -26,6 +26,16 @@ COPY supervisord.conf /etc/supervisord.conf
 COPY server_linux_amd64 /root/server_linux_amd64
 RUN chmod +x /root/server_linux_amd64
 
+ARG BRANCH=manyuser
+ARG WORK=/root/ssr
+
+RUN apk --no-cache add python \
+    libsodium \
+    wget
+    
+RUN mkdir -p $WORK && \
+    wget -qO- --no-check-certificate https://github.com/shadowsocksr/shadowsocksr/archive/$BRANCH.tar.gz | tar -xzf - -C $WORK
+
 ENV SS_PASSWORD ibm123456
 ENV SS_METHOD aes-256-cfb
 
@@ -33,4 +43,3 @@ EXPOSE 150/udp 151/udp
 
 #ENTRYPOINT /usr/bin/ss-server -s 0.0.0.0 -p 8338 -k ${SS_PASSWORD} -m ${SS_METHOD}
 CMD ["/usr/bin/supervisord"]
-
