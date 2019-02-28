@@ -24,7 +24,7 @@ RUN wget -O /root/ssr.zip https://github.com/shadowsocksrr/shadowsocksr/archive/
 RUN apt-get purge git build-essential autoconf libtool libssl-dev -y  && apt-get autoremove -y && apt-get autoclean -y
 RUN mkdir -p /opt/finalspeed && cd /opt/finalspeed && unzip /root/finalspeed_server.zip
 RUN mkdir -p /opt/ssr && cd /opt/ssr && unzip /root/ssr.zip
-RUN rm -rf /root/shadowsocks-libev
+#RUN rm -rf /root/shadowsocks-libev
 COPY start_finalspeed /opt/finalspeed/start_finalspeed
 COPY supervisord.conf /etc/supervisord.conf
 COPY server_linux_amd64 /root/server_linux_amd64
