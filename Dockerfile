@@ -35,7 +35,7 @@ RUN chmod +x /root/udp2raw_amd64
 ENV SS_PASSWORD ibm123456
 ENV SS_METHOD aes-256-cfb
 
-EXPOSE 150/udp 151/udp 8339/tcp
+EXPOSE 150/udp 151/udp 8339/tcp 17517/tcp
 
 #ENTRYPOINT /usr/bin/ss-server -s 0.0.0.0 -p 8338 -k ${SS_PASSWORD} -m ${SS_METHOD}
 CMD ["/usr/bin/supervisord"]
